@@ -11,6 +11,9 @@ var VISION_FILE = "html/vision.html";
 var ABOUT_FILE = "html/about.html";
 var SUPPORT_FILE = "html/support.html";
 var BENEFITS_FILE = "html/benefits.html";
+var EXPAND_FILE = "html/expand.html";
+var FINANCE_FILE = "html/finance.html";
+var PROGRAMS_FILE = "html/programs.html";
 
 // create the server
 
@@ -25,8 +28,11 @@ var server = http.createServer(app);
 var home_page = fs.readFileSync(INPUT_FILE, 'utf8');
 var vision_page = fs.readFileSync(VISION_FILE, 'utf8');
 var about_page = fs.readFileSync(ABOUT_FILE, 'utf8');
-//var support_page = fs.readFileSync(SUPPORT_FILE, 'utf8');
-//var benefits_page = fs.readFileSync(BENEFITS_FILE, 'utf8');
+var expand_page = fs.readFileSync(EXPAND_FILE, 'utf8');
+var support_page = fs.readFileSync(SUPPORT_FILE, 'utf8');
+var benefits_page = fs.readFileSync(BENEFITS_FILE, 'utf8');
+var finance_page = fs.readFileSync(FINANCE_FILE, 'utf8');
+var programs_page = fs.readFileSync(PROGRAMS_FILE, 'utf8');
 
 // create the routes to handle http requests for the individual pages
 
@@ -53,6 +59,20 @@ app.get('/support.html', function(req, res) {
 app.get('/benefits.html', function(req, res) {
    res.send(benefits_page);
 });
+
+app.get('/expand.html', function(req, res) {
+   res.send(expand_page);
+});
+
+app.get('/finance.html', function(req, res) {
+   res.send(finance_page);
+});
+
+app.get('/programs.html', function(req, res) {
+   res.send(programs_page);
+});
+
+// this is the health check service from the infrastructure - do not remove
 
 app.get('/ping.html', function(req, res) {
    res.send('alive');
