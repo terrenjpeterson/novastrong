@@ -78,6 +78,18 @@ app.get('/ping.html', function(req, res) {
    res.send('alive');
 });
 
+// this is the check from google to verify the site - do not remove
+
+app.get('/google1b3f3010091b833e.html', function(req, res) {
+   res.send('google-site-verification: google1b3f3010091b833e.html');
+});
+
+// this is for the search engine crawlers - do not remove
+
+app.get('/robots.txt', function(req, res) {
+   res.send('User-agent: * /n Allow: /');
+});
+
 // begin listening on the port for traffic
 
 app.listen(8080);
