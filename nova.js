@@ -3,6 +3,7 @@
 var express = require('express');
 var http = require('http');
 var fs = require('fs');
+var AWS = require('aws-sdk');
 
 // set variables for each html page served
 
@@ -91,12 +92,14 @@ app.get('/ping.html', function(req, res) {
 // this is the check from google to verify the site - do not remove
 
 app.get('/google1b3f3010091b833e.html', function(req, res) {
+   console.log('received google verification code');
    res.send('google-site-verification: google1b3f3010091b833e.html');
 });
 
 // this is for the search engine crawlers - do not remove
 
 app.get('/robots.txt', function(req, res) {
+   console.log('received request for robots file');
    res.send('User-agent: * /n Allow: /');
 });
 
@@ -120,21 +123,22 @@ app.post('/sendQuestion', function(request, response) {
 
     // create an e-mail alerting of the question
 
-    var questionMail = {};
-        questionMail.From = 'info@drawrz.com';
-        questionMail.To = 'terrenjpeterson@yahoo.com';
-        questionMail.Subject = 'Question from the Drawrz Website';
-        questionMail.HtmlBody = 'from: ' + newQuestion.firstName + ' ' + newQuestion.lastName + '<br>' +
-                                'address: ' + newQuestion.emailAddress + '<br>' +
-                                'topic: ' + newQuestion.contactTopic + '<br><br>' +
-                                'message: ' + newQuestion.msg;
+    var params = {
+      MessageBody: questionData,
+      QueueUrl: 'https://sqs.us-west-2.amazonaws.com/034353605017/NOVAStrongContact', 
+      DelaySeconds: 0
+      };
 
-//   postmark.send(questionMail, function(err, success) {
-//     if(err)
-//        console.log('Unable to send via postmark: ' + err.message
-//      else
-//        console.log('Sent to postmark for delivery from : ' + newQuestion.emailAddress)
-//   });
+    console.log('parameters object: ' + JSON.stringify(params));
+
+    var sqs = new AWS.SQS({region: 'us-west-2'});
+
+    sqs.sendMessage(params, function(err, data) {
+      if(err)
+         console.log('error: ' + err + ' more info: ' +  err.stack);
+      else
+         console.log('success: ' + JSON.stringify(data));
+    });
 
     // create a thank you response e-mail back to the sender
 
