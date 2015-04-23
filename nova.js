@@ -12,11 +12,14 @@ var VISION_FILE   = "html/vision.html";
 var ABOUT_FILE    = "html/about.html";
 var SUPPORT_FILE  = "html/support.html";
 var BENEFITS_FILE = "html/benefits.html";
+var CORP_FILE     = "html/corporate.html";
+var INDIVID_FILE  = "html/individual.html";
 var EXPAND_FILE   = "html/expand.html";
 var FINANCE_FILE  = "html/finance.html";
 var PROGRAMS_FILE = "html/programs.html";
 var CONTACT_FILE  = "html/contact.html";
 var VIDEO_FILE    = "html/video.html";
+var DRAWINGS_FILE = "html/drawings.html";
 
 // create the server
 
@@ -34,10 +37,13 @@ var about_page    = fs.readFileSync(ABOUT_FILE, 'utf8');
 var expand_page   = fs.readFileSync(EXPAND_FILE, 'utf8');
 var support_page  = fs.readFileSync(SUPPORT_FILE, 'utf8');
 var benefits_page = fs.readFileSync(BENEFITS_FILE, 'utf8');
+var corp_page     = fs.readFileSync(CORP_FILE, 'utf8');
+var individ_page  = fs.readFileSync(INDIVID_FILE, 'utf8');
 var finance_page  = fs.readFileSync(FINANCE_FILE, 'utf8');
 var programs_page = fs.readFileSync(PROGRAMS_FILE, 'utf8');
 var contact_page  = fs.readFileSync(CONTACT_FILE, 'utf8');
 var video_page    = fs.readFileSync(VIDEO_FILE, 'utf8');
+var drawings_page = fs.readFileSync(DRAWINGS_FILE, 'utf8');
 
 // this gets static files linked so that they may be served in get requests
 
@@ -69,6 +75,14 @@ app.get('/benefits.html', function(req, res) {
    res.send(benefits_page);
 });
 
+app.get('/individual.html', function(req, res) {
+   res.send(individ_page);
+});
+
+app.get('/corporate.html', function(req, res) {
+   res.send(corp_page);
+});
+
 app.get('/expand.html', function(req, res) {
    res.send(expand_page);
 });
@@ -87,6 +101,10 @@ app.get('/contact.html', function(req, res) {
 
 app.get('/video.html', function(req, res) {
    res.send(video_page);
+});
+
+app.get('/drawings.html', function(req, res) {
+   res.send(drawings_page);
 });
 
 // this is the health check service from the infrastructure - do not remove
