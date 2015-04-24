@@ -20,6 +20,7 @@ var PROGRAMS_FILE = "html/programs.html";
 var CONTACT_FILE  = "html/contact.html";
 var VIDEO_FILE    = "html/video.html";
 var DRAWINGS_FILE = "html/drawings.html";
+var INVOLVE_FILE  = "html/involvement.html";
 
 // create the server
 
@@ -44,6 +45,7 @@ var programs_page = fs.readFileSync(PROGRAMS_FILE, 'utf8');
 var contact_page  = fs.readFileSync(CONTACT_FILE, 'utf8');
 var video_page    = fs.readFileSync(VIDEO_FILE, 'utf8');
 var drawings_page = fs.readFileSync(DRAWINGS_FILE, 'utf8');
+var involve_page  = fs.readFileSync(INVOLVE_FILE, 'utf8');
 
 // this gets static files linked so that they may be served in get requests
 
@@ -105,6 +107,10 @@ app.get('/video.html', function(req, res) {
 
 app.get('/drawings.html', function(req, res) {
    res.send(drawings_page);
+});
+
+app.get('/involvement.html', function(req, res) {
+   res.send(involve_page);
 });
 
 // this is the health check service from the infrastructure - do not remove
