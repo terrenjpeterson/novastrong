@@ -14,7 +14,6 @@ var SUPPORT_FILE  = "html/support.html";
 var BENEFITS_FILE = "html/benefits.html";
 var CORP_FILE     = "html/corporate.html";
 var INDIVID_FILE  = "html/individual.html";
-var EXPAND_FILE   = "html/expand.html";
 var FINANCE_FILE  = "html/finance.html";
 var PROGRAMS_FILE = "html/programs.html";
 var CONTACT_FILE  = "html/contact.html";
@@ -22,7 +21,8 @@ var VIDEO_FILE    = "html/video.html";
 var DRAWINGS_FILE = "html/drawings.html";
 var INVOLVE_FILE  = "html/involvement.html";
 var COMMNTY_FILE  = "html/community.html";
-var DONORS_FILE    = "html/donors.html";
+var DONORS_FILE   = "html/donors.html";
+var GROWTH_FILE   = "html/growth.html";
 
 // create the server
 
@@ -37,7 +37,6 @@ var server = http.createServer(app);
 var home_page     = fs.readFileSync(INPUT_FILE, 'utf8');
 var vision_page   = fs.readFileSync(VISION_FILE, 'utf8');
 var about_page    = fs.readFileSync(ABOUT_FILE, 'utf8');
-var expand_page   = fs.readFileSync(EXPAND_FILE, 'utf8');
 var support_page  = fs.readFileSync(SUPPORT_FILE, 'utf8');
 var benefits_page = fs.readFileSync(BENEFITS_FILE, 'utf8');
 var corp_page     = fs.readFileSync(CORP_FILE, 'utf8');
@@ -50,6 +49,7 @@ var drawings_page = fs.readFileSync(DRAWINGS_FILE, 'utf8');
 var involve_page  = fs.readFileSync(INVOLVE_FILE, 'utf8');
 var commnty_page  = fs.readFileSync(COMMNTY_FILE, 'utf8');
 var donors_page   = fs.readFileSync(DONORS_FILE, 'utf8');
+var growth_page   = fs.readFileSync(GROWTH_FILE, 'utf8');
 
 // this gets static files linked so that they may be served in get requests
 
@@ -89,10 +89,6 @@ app.get('/corporate.html', function(req, res) {
    res.send(corp_page);
 });
 
-app.get('/expand.html', function(req, res) {
-   res.send(expand_page);
-});
-
 app.get('/finance.html', function(req, res) {
    res.send(finance_page);
 });
@@ -123,6 +119,10 @@ app.get('/community.html', function(req, res) {
 
 app.get('/donors.html', function(req, res) {
    res.send(donors_page);
+});
+
+app.get('/growth.html', function(req, res) {
+   res.send(growth_page);
 });
 
 // this is the health check service from the infrastructure - do not remove
