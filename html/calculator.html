@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- included for angular framework -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <title>Nova of Virginia Aquatics</title>
+
+    <script src="js/calculator.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">HOME</a></li>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ABOUT NOVA<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Current Programs</a></li>
+                    <li><a href="involvement.html">Community Involvement</a></li>
+                    <li><a href="http://www.novaswim.org/">Club Website</a></li>
+                  </ul>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">PROJECT VISION<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="vision.html">Project Overview</a></li>
+                    <li><a href="video.html">3-D Tour</a></li>
+                    <li><a href="finance.html">Project Finances</a></li>
+                    <li><a href="drawings.html">Architect Drawings</a></li>
+                  </ul>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">WHY EXPAND?<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="growth.html">Team Growth History</a></li>
+                    <li><a href="benefits.html">Benefits to Our Club</a></li>
+                    <li><a href="community.html">Benefits to the Community</a></li>
+                  </ul>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">SUPPORT US<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="support.html">Make a Gift</a></li>
+                    <li><a href="donors.html">Project Supporters</a></li>
+                    <li><a href="individual.html">Individual Giving Benefits</a></li>
+                    <li><a href="corporate.html">Corporate Giving Benefits</a></li>
+                  </ul>
+
+                <li><a href="contact.html">CONTACT US</a></li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row featurette">
+        <div class="col-md-5">
+          <img src="https://s3-us-west-2.amazonaws.com/novaphotos/logo.png" width="300" height="150">
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">A NOVA for the Future</h2>
+        </div>
+      </div>
+
+      <div ng-controller="CalculatorCtrl">
+
+        <h2>Trip Cost Calculator</h2>
+        <p>How much would you save by doing a long-course meet at the NOVA Aquatics facility?  Travel trips can be expensive in both time and money.  Try out the calculator below to see how much a long-course meet costs, and could be saved if you were able to stay home for a long-course meet.</p>
+
+        <h3>Travel Destination</h3>
+        <span><select class="input-medium" ng-model="distanceDriven">
+          <option value="NewportNews">Newport News - 75 Miles</option>
+          <option value="Waynesboro">Waynesboro - 80 Miles</option>
+          <option value="Manassas">Manassas - 100 Miles</option>
+          <option value="Raleigh">Raleigh - 140 Miles</option>
+        </select>
+        <br>
+
+        <h3>Hotel Stay</h3>
+        <span><select class="input-medium" ng-model="hotelDuration" placeholder="No Hotel">
+          <option value="None">No Hotel</option>
+          <option value="OneNight">One Night</option>
+          <option value="TwoNights">Two Nights</option>
+          <option value="ThreeNights">Three Nights</option>
+        </select>
+        <br>
+
+        <h3>Eating Out</h3>
+        <span><select class="input-medium" ng-model="eatingOutDuration">
+          <option value="None">No Meals Out</option>
+          <option value="OneFullDay">One Full Day - 2-3 people</option>
+          <option value="TwoFullDays">Two Full Days - 2-3 people</option>
+          <option value="ThreeFullDays">Three Full Days - 2-3 people</option>
+        </select>
+        <br><br>
+
+        <p><button class="btn btn-primary" data-toggle="button" ng-click="calcEstimate()">Calculate</button></p>
+
+        <span>{{gasMessage}}</span><br>
+        <span>{{hotelMessage}}</span><br>
+        <span>{{diningMessage}}</span><br>
+        <span>{{totalMessage}}</span><br>
+
+      </div>
+
+      <hr class="featurette-divider">
+
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <addresss>
+          <strong>Nova of Virginia Aquatics</strong><br>
+          12207 Gayton Road<br>
+          Richmond, VA 23238<br>
+        </address>
+        <p>&copy; Nova of Virginia Aquatics - All Rights Reserved.</p>
+        <br>
+      </footer>
+    </div> <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-59496736-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

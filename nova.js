@@ -23,6 +23,7 @@ var INVOLVE_FILE  = "html/involvement.html";
 var COMMNTY_FILE  = "html/community.html";
 var DONORS_FILE   = "html/donors.html";
 var GROWTH_FILE   = "html/growth.html";
+var CALC_FILE     = "html/calculator.html";
 
 // create the server
 
@@ -50,6 +51,7 @@ var involve_page  = fs.readFileSync(INVOLVE_FILE, 'utf8');
 var commnty_page  = fs.readFileSync(COMMNTY_FILE, 'utf8');
 var donors_page   = fs.readFileSync(DONORS_FILE, 'utf8');
 var growth_page   = fs.readFileSync(GROWTH_FILE, 'utf8');
+var calc_page     = fs.readFileSync(CALC_FILE, 'utf8');
 
 // this gets static files linked so that they may be served in get requests
 
@@ -123,6 +125,14 @@ app.get('/donors.html', function(req, res) {
 
 app.get('/growth.html', function(req, res) {
    res.send(growth_page);
+});
+
+app.get('/calculator.html', function(req, res) {
+   res.send(calc_page);
+});
+
+app.get('/calculator', function(req, res) {
+   res.send(calc_page);
 });
 
 // this is the health check service from the infrastructure - do not remove
