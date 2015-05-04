@@ -20,12 +20,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style type="text/css">
-      body {
-        margin: 50px;
-      }
-    </style>
-
   </head>
   <body>
 
@@ -108,6 +102,7 @@
     <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -116,6 +111,23 @@
       </ol>
 
       <div class="carousel-inner" role="listbox">
+        <style>
+          @media (min-width: 605px) {
+            body
+              {padding-left: 40px;
+               padding-right: 40px;}
+          }
+          @media (min-width: 905px) {
+            body
+              {padding-left: 120px;
+               padding-right: 120px;}
+          }
+          @media (min-width: 1405px) {
+            body
+              {padding-left: 250px;
+               padding-right: 250px;}
+          }
+        </style>
         <div class="item active">
           <img src="https://s3-us-west-2.amazonaws.com/novaphotos/HOME_PROJ_VISION.JPG" width="1800" height="1200" align="middle" class="img-thumbnail" alt="First slide">
           <div class="container">
