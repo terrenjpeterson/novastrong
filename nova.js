@@ -25,6 +25,8 @@ var DONORS_FILE   = "html/donors.html";
 var GROWTH_FILE   = "html/growth.html";
 var CALC_FILE     = "html/calculator.html";
 
+var SITEMAP_FILE  = "xml/sitemap.xml";
+
 // create the server
 
 console.log('creating the server');
@@ -52,6 +54,8 @@ var commnty_page  = fs.readFileSync(COMMNTY_FILE, 'utf8');
 var donors_page   = fs.readFileSync(DONORS_FILE, 'utf8');
 var growth_page   = fs.readFileSync(GROWTH_FILE, 'utf8');
 var calc_page     = fs.readFileSync(CALC_FILE, 'utf8');
+
+var sitemap       = fs.readFileSync(SITEMAP_FILE, 'utf8');
 
 // this gets static files linked so that they may be served in get requests
 
@@ -133,6 +137,12 @@ app.get('/calculator.html', function(req, res) {
 
 app.get('/calculator', function(req, res) {
    res.send(calc_page);
+});
+
+// this it to handle the sitemap checking from search engines
+
+app.get('/sitemap.xml', function(req,res) {
+   res.send(sitemap);
 });
 
 // this is the health check service from the infrastructure - do not remove
