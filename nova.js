@@ -5,6 +5,12 @@ var http = require('http');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 
+// bring in framework of html pages that is common across the site
+
+var HEADER_FILE = "framework/header.html";
+var NAVBAR_FILE = "framework/navbar.html";
+var FOOTER_FILE = "framework/footer.html";
+
 // set variables for each html page served
 
 var INPUT_FILE    = "html/index.html";
@@ -13,6 +19,7 @@ var ABOUT_FILE    = "html/about.html";
 var SUPPORT_FILE  = "html/support.html";
 var BENEFITS_FILE = "html/benefits.html";
 var CORP_FILE     = "html/corporate.html";
+var NEWS_FILE     = "html/news.html";
 var INDIVID_FILE  = "html/individual.html";
 var FINANCE_FILE  = "html/finance.html";
 var PROGRAMS_FILE = "html/programs.html";
@@ -27,6 +34,8 @@ var CALC_FILE     = "html/calculator.html";
 
 var SITEMAP_FILE  = "xml/sitemap.xml";
 
+var PLEDGE_CARD   = "https://s3-us-west-2.amazonaws.com/novaphotos/NOVAPowerPledgeCard.pdf";
+
 // create the server
 
 console.log('creating the server');
@@ -34,6 +43,12 @@ console.log('creating the server');
 var app = express();
 
 var server = http.createServer(app);
+
+// load the framework pages in memory
+
+var heading = fs.readFileSync(HEADER_FILE, 'utf8');
+var navbar  = fs.readFileSync(NAVBAR_FILE, 'utf8');
+var footer  = fs.readFileSync(FOOTER_FILE, 'utf8');
 
 // load the html pages in memory for the server
 
@@ -43,6 +58,7 @@ var about_page    = fs.readFileSync(ABOUT_FILE, 'utf8');
 var support_page  = fs.readFileSync(SUPPORT_FILE, 'utf8');
 var benefits_page = fs.readFileSync(BENEFITS_FILE, 'utf8');
 var corp_page     = fs.readFileSync(CORP_FILE, 'utf8');
+var news_page     = fs.readFileSync(NEWS_FILE, 'utf8');
 var individ_page  = fs.readFileSync(INDIVID_FILE, 'utf8');
 var finance_page  = fs.readFileSync(FINANCE_FILE, 'utf8');
 var programs_page = fs.readFileSync(PROGRAMS_FILE, 'utf8');
@@ -131,6 +147,14 @@ app.get('/growth.html', function(req, res) {
    res.send(growth_page);
 });
 
+// test section
+
+app.get('/news.html', function(req, res) {
+   res.send(heading + navbar + news_page + footer);
+});
+
+// this is the angular page that will provide a cost calculator
+
 app.get('/calculator.html', function(req, res) {
    res.send(calc_page);
 });
@@ -138,6 +162,12 @@ app.get('/calculator.html', function(req, res) {
 app.get('/calculator', function(req, res) {
    res.send(calc_page);
 });
+
+// this is to handle the link for passing back the pledge card
+
+app.get('/pledgecardtest', function(req, res) {
+   res.send(PLEDGE_CARD);
+}); 
 
 // this it to handle the sitemap checking from search engines
 
