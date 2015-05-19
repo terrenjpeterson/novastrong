@@ -88,35 +88,35 @@ app.get('/index.html', function(req, res) {
 });
 
 app.get('/vision.html', function(req, res) {
-   res.send(vision_page);
+   res.send(heading + navbar + vision_page);
 });
 
 app.get('/about.html', function(req, res) {
-   res.send(about_page);
+   res.send(heading + navbar + about_page);
 });
 
 app.get('/support.html', function(req, res) {
-   res.send(support_page);
+   res.send(heading + navbar + support_page);
 });
 
 app.get('/benefits.html', function(req, res) {
-   res.send(benefits_page);
+   res.send(heading + navbar + benefits_page);
 });
 
 app.get('/individual.html', function(req, res) {
-   res.send(individ_page);
+   res.send(heading + navbar + individ_page);
 });
 
 app.get('/corporate.html', function(req, res) {
-   res.send(corp_page);
+   res.send(heading + navbar + corp_page);
 });
 
 app.get('/finance.html', function(req, res) {
-   res.send(finance_page);
+   res.send(heading + navbar + finance_page);
 });
 
 app.get('/programs.html', function(req, res) {
-   res.send(programs_page);
+   res.send(heading + navbar + programs_page);
 });
 
 app.get('/contact.html', function(req, res) {
@@ -124,30 +124,28 @@ app.get('/contact.html', function(req, res) {
 });
 
 app.get('/video.html', function(req, res) {
-   res.send(video_page);
+   res.send(heading + navbar + video_page);
 });
 
 app.get('/drawings.html', function(req, res) {
-   res.send(drawings_page);
+   res.send(heading + navbar + drawings_page);
 });
 
 app.get('/involvement.html', function(req, res) {
-   res.send(involve_page);
+   res.send(heading + navbar + involve_page);
 });
 
 app.get('/community.html', function(req, res) {
-   res.send(commnty_page);
+   res.send(heading + navbar + commnty_page);
 });
 
 app.get('/donors.html', function(req, res) {
-   res.send(donors_page);
+   res.send(heading + navbar + donors_page);
 });
 
 app.get('/growth.html', function(req, res) {
-   res.send(growth_page);
+   res.send(heading + navbar + growth_page);
 });
-
-// test section
 
 app.get('/news.html', function(req, res) {
    res.send(heading + navbar + news_page + footer);
