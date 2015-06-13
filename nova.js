@@ -25,12 +25,14 @@ var FINANCE_FILE  = "html/finance.html";
 var PROGRAMS_FILE = "html/programs.html";
 var CONTACT_FILE  = "html/contact.html";
 var VIDEO_FILE    = "html/video.html";
+var PLEDGE_FILE   = "html/pledge.html";
 var DRAWINGS_FILE = "html/drawings.html";
 var INVOLVE_FILE  = "html/involvement.html";
 var COMMNTY_FILE  = "html/community.html";
 var DONORS_FILE   = "html/donors.html";
 var GROWTH_FILE   = "html/growth.html";
 var CALC_FILE     = "html/calculator.html";
+var RESULTS_FILE  = "html/results.html";
 
 var SITEMAP_FILE  = "xml/sitemap.xml";
 
@@ -64,12 +66,14 @@ var finance_page  = fs.readFileSync(FINANCE_FILE, 'utf8');
 var programs_page = fs.readFileSync(PROGRAMS_FILE, 'utf8');
 var contact_page  = fs.readFileSync(CONTACT_FILE, 'utf8');
 var video_page    = fs.readFileSync(VIDEO_FILE, 'utf8');
+var pledge_page   = fs.readFileSync(PLEDGE_FILE, 'utf8');
 var drawings_page = fs.readFileSync(DRAWINGS_FILE, 'utf8');
 var involve_page  = fs.readFileSync(INVOLVE_FILE, 'utf8');
 var commnty_page  = fs.readFileSync(COMMNTY_FILE, 'utf8');
 var donors_page   = fs.readFileSync(DONORS_FILE, 'utf8');
 var growth_page   = fs.readFileSync(GROWTH_FILE, 'utf8');
 var calc_page     = fs.readFileSync(CALC_FILE, 'utf8');
+var results_page  = fs.readFileSync(RESULTS_FILE, 'utf8');
 
 var sitemap       = fs.readFileSync(SITEMAP_FILE, 'utf8');
 
@@ -127,6 +131,10 @@ app.get('/video.html', function(req, res) {
    res.send(heading + navbar + video_page);
 });
 
+app.get('/pledge.html', function(req, res) {
+   res.send(heading + navbar + pledge_page);
+});
+
 app.get('/drawings.html', function(req, res) {
    res.send(heading + navbar + drawings_page);
 });
@@ -161,11 +169,11 @@ app.get('/calculator', function(req, res) {
    res.send(calc_page);
 });
 
-// this is to handle the link for passing back the pledge card
+// this is a temp page and will be moved to another site
 
-app.get('/pledgecardtest', function(req, res) {
-   res.send(PLEDGE_CARD);
-}); 
+app.get('/results', function(req, res) {
+   res.send(results_page);
+});
 
 // this it to handle the sitemap checking from search engines
 
